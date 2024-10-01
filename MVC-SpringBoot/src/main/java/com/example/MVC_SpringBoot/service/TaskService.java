@@ -4,9 +4,11 @@ import com.example.MVC_SpringBoot.model.Task;
 import com.example.MVC_SpringBoot.repository.TaskRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TaskService
 {
     @Autowired
