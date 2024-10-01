@@ -17,10 +17,10 @@
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
-                <tr th:each="task : ${tasks}">
-                    <td th:text="${task.id}"></td>
-                    <td th:text="${task.name}"></td>
-                    <td th:text="${task.description}"></td>
+                <tr th:each="task : ${tasks}" th:object="${task}">
+                    <td th:text="*{id}"></td>
+                    <td th:text="*{name}"></td>
+                    <td th:text="*{description}"></td>
                     <td th:text="${task.dueDate}"></td>
                     <td th:text="${task.status}"></td>
                     <td>
@@ -32,7 +32,7 @@
         </div>
         <br/>
         <div>
-            <a style="border: 2px solid black; color: #1e11ae;" href="/tasks/new">Add New Task</a>
+            <a href="/tasks/new">Add New Task</a>
         </div>
     </div>
 </body>

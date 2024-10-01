@@ -2,13 +2,18 @@ package com.example.MVC_SpringBoot.model;
 
 
 
-import jakarta.persistence.*;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
@@ -25,12 +30,12 @@ public class Project
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<Task> tasks;
 
-    @Override
-    public String toString() {
-        return "Project{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", tasks=" + tasks +
-                '}';
-    }
+    // @Override
+    // public String toString() {
+    //     return "Project{" +
+    //             "id=" + id +
+    //             ", name='" + name + '\'' +
+    //             ", tasks=" + tasks +
+    //             '}';
+    // }
 }

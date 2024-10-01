@@ -2,36 +2,39 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Edit Task</title> <!-- Link to CSS file if any -->
+    <title>Edit Task</title>
+    <link rel="stylesheet" th:href="@{/edit-task.css}">
 </head>
 <body>
-
-    <h2>Edit Task</h2>
-    <!-- Form to edit the task -->
-    <form th:action="@{/tasks/update/{id}(id=${task.id})}" th:object="${task}" method="post">
-        <div>
-            <label for="name">Task Name:</label>
-            <input type="text" th:field="*{name}" id="name" />
+    <div class="main">
+        <div class="center">
+            <h2 class="status">Edit Task</h2>
+            <form th:action="@{/tasks/update/{id}(id=${task.id})}" th:object="${task}" method="post">
+                <div class="field">
+                    <label class="status" for="name">Task Name:</label>
+                    <input type="text" th:field="*{name}" id="name" />
+                </div>
+                <div class="field">
+                    <label class="status" for="description">Description:</label>
+                    <textarea th:field="*{description}" id="description"></textarea>
+                </div>
+                <div class="field">
+                    <label class="status" for="date">Due Date:</label>
+                    <input type="date" th:field="*{dueDate}" id="date"/><br/>
+                </div>
+                <div class="field">
+                    <label class="status" for="status">Status:</label>
+                    <select th:field="*{status}">
+                        <option value="PENDING" th:selected="${task.status == 'PENDING'}">Pending</option>
+                        <option value="IN_PROGRESS" th:selected="${task.status == 'IN_PROGRESS'}">In Progress</option>
+                        <option value="COMPLETED" th:selected="${task.status == 'COMPLETED'}">Completed</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <input class="status" id="touch" type="submit" value="Update Task">
+                </div>
+            </form>
         </div>
-        <div>
-            <label for="description">Description:</label>
-            <textarea th:field="*{description}" id="description"></textarea>
-        </div>
-        <div>
-            <label for="date">Due Date:</label>
-            <input type="date" th:field="*{dueDate}" id="date"/><br/>
-        </div>
-        <div>
-            <label for="status">Status:</label>
-            <select th:field="*{status}">
-                <option value="PENDING" th:selected="${task.status == 'PENDING'}">Pending</option>
-                <option value="IN_PROGRESS" th:selected="${task.status == 'IN_PROGRESS'}">In Progress</option>
-                <option value="COMPLETED" th:selected="${task.status == 'COMPLETED'}">Completed</option>
-            </select>
-        </div>
-        <div>
-            <input type="submit" value="Update Task">
-        </div>
-    </form>
+    </div>
 </body>
 </html>
