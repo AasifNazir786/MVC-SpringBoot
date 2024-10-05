@@ -1,14 +1,15 @@
 package com.example.MVC_SpringBoot.service;
 
-import com.example.MVC_SpringBoot.model.Project;
-import com.example.MVC_SpringBoot.repository.ProjectRepository;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.MVC_SpringBoot.model.Project;
+import com.example.MVC_SpringBoot.repository.ProjectRepository;
+
+@Service
 public class ProjectService
 {
     @Autowired
@@ -24,7 +25,7 @@ public class ProjectService
     {
         return Optional.ofNullable(repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Project with id: " + id + " not found")));
-  }
+    }
 
     public Project createProject(Project project)
     {
