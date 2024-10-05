@@ -20,7 +20,7 @@
                 <tr th:each="task : ${tasks}" th:object="${task}">
                     <td th:text="*{id}"></td>
                     <td th:text="*{name}"></td>
-                    <td th:text="*{description}"></td>
+                    <td id="description" th:text="*{description}"></td>
                     <td th:text="${task.dueDate}"></td>
                     <td th:text="${task.status}"></td>
                     <td>
@@ -32,7 +32,7 @@
         </div>
         <br/>
         <div id="new">
-            <a href="@{/tasks/new}">Add New Task</a>
+            <a href="/tasks/new">Add New Task</a>
         </div>
     </div>
 </body>
