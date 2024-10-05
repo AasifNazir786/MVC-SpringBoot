@@ -1,5 +1,6 @@
 package com.example.MVC_SpringBoot.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.MVC_SpringBoot.model.Project;
+import com.example.MVC_SpringBoot.model.Task;
 import com.example.MVC_SpringBoot.service.ProjectService;
 
 
@@ -30,7 +33,19 @@ public class ProjectController {
     }
 
     @PostMapping
-    public String createProject(@ModelAttribute("project")Project project){
+    public String createProject(@ModelAttribute("project") Project project, @RequestParam("tasksInput") String tasksInput) {
+        // Convert tasks string (comma-separated) to Task objects
+        List<Task> taskList = new ArrayList<>();
+        if (tasksInput != null && !tasksInput.isEmpty()) {
+            String[] taskArray = tasksInput.split(",");
+            for (String taskName : taskArray) {
+                Task task = new Task();
+                task.setName(taskName.trim());
+                task.setProject(project);
+                taskList.add(task);
+            }
+        }
+        project.setTasks(taskList);
         service.createProject(project);
         return "redirect:/projects";
     }
@@ -54,7 +69,7 @@ public class ProjectController {
         return "redirect:/projects";
     }
 
-    @PostMapping("/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteProject(@PathVariable("id") int id){
         service.deleteProject(id);
         return "redirect:/projects";

@@ -12,7 +12,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Project Name</th>
+                    <th>ProjectName</th>
                     <th>Tasks</th>
                     <th>Actions</th>
                 </tr>
@@ -23,12 +23,12 @@
                     <td th:text="${project.name}"></td>
                     <td>
                         <ul>
-                            <li th:each="task : ${project.tasks}" th:text="${task.name}">Task Name</li>
+                            <li th:each="task : ${project.tasks}" th:text="${task.name}"></li>
                         </ul>
                     </td>
                     <td>
-                        <a href="@{projects/edit/{id}(id=${project.id})}">EditProject</a> |
-                        <a href="@{projects/delete/{id}(id=${project.id})}">DeleteProject</a>
+                        <a th:href="@{/projects/edit/{id}(id=${project.id})}">EditProject</a> |
+                        <a th:href="@{/projects/delete/{id}(id=${project.id})}">DeleteProject</a>
                     </td>
                 </tr>
             </tbody>
