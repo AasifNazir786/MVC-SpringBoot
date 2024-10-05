@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks-List</title>
+</head>
+<body>
+    <div id="table">
+        <h1>Tasks-List</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Project Name</th>
+                    <th>Tasks</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="project : ${projects}">
+                    <td th:text="${project.id}"></td>
+                    <td th:text="${project.name}"></td>
+                    <td>
+                        <ul>
+                            <li th:each="task : ${project.tasks}" th:text="${task.name}">Task Name</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <a href="@{projects/edit/{id}(id=${project.id})}">EditProject</a> |
+                        <a href="@{projects/delete/{id}(id=${project.id})}">DeleteProject</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br/>
+    <div>
+        <a href="/projects/new">Add New Project</a>
+    </div>
+</body>
+</html>

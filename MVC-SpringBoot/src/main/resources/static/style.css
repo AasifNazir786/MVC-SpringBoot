@@ -18,13 +18,11 @@ html, body{
     display: flex;
 }
 #table-div{
-    margin-left: 100px;
     height: 30%;
     width: 70%;
 }
 
 #new{
-    margin-top: 10%;
     height: 10%;
     width: 10%;
     text-transform: uppercase;
@@ -32,10 +30,6 @@ html, body{
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-#description{
-    text-transform: capitalize;
 }
 
 table{

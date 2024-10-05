@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            <form th:action="@{/projects}" th:object="${project}" method="post">
+                <div>
+                    <label for="name">Name: </label>
+                    <input type="text" th:field="*{name}" id="name" placeholder="Enter ProjectName">
+                </div>
+                <div>
+                    <label for="tasks">Tasks: </label>
+                    <input type="text" id="tasks" placeholder="Enter tasks"/><br><br>
+                </div>
+                <div>
+                    <button type="submit">Save Project</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
