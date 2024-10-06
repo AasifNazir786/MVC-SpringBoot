@@ -8,7 +8,7 @@
 <body>
     <div>
         <div>
-            <form th:action="@{/projects}" th:object="${project}" method="post">
+            <form th:action="@{/projects/update/{id}(id=${project.id})}" th:object="${project}" method="post">
                 <div>
                     <label for="name">Name: </label>
                     <input type="text" th:field="*{name}" id="name" placeholder="Enter ProjectName">
@@ -18,7 +18,7 @@
                     <input type="text" name="tasksInput" id="tasks" placeholder="Enter tasks"/><br><br>
                 </div>
                 <div>
-                    <button type="submit">Save Project</button>
+                    <button type="submit">Update Project</button>
                 </div>
             </form>
         </div>

@@ -60,11 +60,22 @@ public class ProjectController {
     public String showEditForm(@PathVariable("id")int id, Model model){
         Project project = service.getProjectById(id).orElse(null);
         model.addAttribute("project", project);
-        return "edit-project";
+        return "editproject";
     }
 
     @PostMapping("/update/{id}")
-    public String updateProject(@PathVariable("id") int id, @ModelAttribute("project") Project project){
+    public String updateProject(@PathVariable("id") int id, @ModelAttribute("project") Project project, @RequestParam("tasksInput") String tasksInput){
+        List<Task> taskList = new ArrayList<>();
+        if (tasksInput != null && !tasksInput.isEmpty()) {
+            String[] taskArray = tasksInput.split(",");
+            for (String taskName : taskArray) {
+                Task task = new Task();
+                task.setName(taskName.trim());
+                task.setProject(project);
+                taskList.add(task);
+            }
+        }
+        project.setTasks(taskList);
         service.updateProject(id, project);
         return "redirect:/projects";
     }
