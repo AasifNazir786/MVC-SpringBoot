@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tasks-List</title>
+    <link rel="stylesheet" href="projectstyle.css">
+    <title>Projects-List</title>
 </head>
 <body>
     <div id="table">
-        <h1>Tasks-List</h1>
+        <h1>Projects-List</h1>
         <table>
             <thead>
                 <tr>
@@ -22,7 +23,7 @@
                     <td th:text="${project.id}"></td>
                     <td th:text="${project.name}"></td>
                     <td>
-                        <ul>
+                        <ul id="center">
                             <li th:each="task : ${project.tasks}" th:text="${task.name}"></li>
                         </ul>
                     </td>
